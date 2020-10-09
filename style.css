@@ -3,12 +3,13 @@
     /* Makes table columns equal width */
     table-layout: fixed;
     font-size: 18px;
+    font-family: 'Bangers', cursive;
 }
 
 #gameText {
     font-size: 50px;
 }
-h1, #gameText, #rstBtn, .form-group, .btn {
+h1, #gameText, #rstBtn, .form-group, .btn, #result {
     font-family: 'Bangers', cursive;
     /*font-family: 'Open Sans', sans-serif;*/
 }

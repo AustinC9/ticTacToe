@@ -79,10 +79,14 @@ createBoard(9);
 // if name = Justin || Ian
 // display Justin || Ian won!
 let btn = document.getElementById("player1btn");
+let btn2 = document.getElementById("player2btn");
 
 btn.addEventListener('click', troll, true);
+btn2.addEventListener('click', troll, true);
 function troll() {
     let player1 = document.getElementById("player1").value;
+    let player2 = document.getElementById("player2").value;
+    
     console.log(player1);
     if (player1 === "Anthony") {
         //alert("Get out of here Anthony")
@@ -90,26 +94,31 @@ function troll() {
         let txtCntnt = document.getElementById("gameText");
         txtCntnt.textContent = "GET OUT OF HERE ANTHONY";
         //resetGame();
-        
-        
-
-
-
-        //if (player1 ===)
-
+        }
+    else if (player2 === "Anthony") {
+        document.getElementById('hideTable').style.display = 'none';
+        let txtCntnt = document.getElementById("gameText");
+        txtCntnt.textContent = "GET OUT OF HERE ANTHONY";
 
     }
 }
 
 
 function clickedOn(e) {
+    //gameWon = false
     if (!gameWon) {
-        let id = e.target.id.split('-')[1];
+        let id = e.target.id.split('-')[1]
+        //split event.target and split off tile-and use array index 1;
         if (!tileArr[id].clicked) {
+            //clicked is true
             tileArr[id].clicked = true;
+            //value on X is 1 not its 2
             tileArr[id].value = (turn === 'X' ? 1 : 2);
+            //update turn
             this.innerHTML = turn;
+            //Turn X display O else display X
             turn === 'X' ? turn = 'O' : turn = 'X';
+            //Display turn
             gameText.innerHTML = `It's ${turn}'s turn!`;
             //console.log(turn);
             console.log(tileArr);
@@ -144,10 +153,13 @@ function checkWin() {
     for (i = 0; i < 8; i++) {
         //turn the array into a comma seperated string and test if equal to an X or O
         if (winArr[i].join() === '1,1,1' || winArr[i].join() === '2,2,2') {
+            //grabs value from array and if all of them are 1 or 2 gamewon 
             gameWon = true;
+            //display who won
             gameText.innerHTML = `${winArr[i].join() === '1,1,1' ? 'X' : 'O'} won the game!`;
             //add to game tally
             turn === 'O' ? gameScore[0]++ : gameScore[1]++;
+            //updsate gamescore
             xWins.innerHTML = gameScore[0];
             oWins.innerHTML = gameScore[1];
             ties.innerHTML = gameScore[2];
@@ -155,6 +167,7 @@ function checkWin() {
         }
     }
     //test for tie
+    //if all are true but gameWon is false
     if (tieArr.join() === 'true,true,true,true,true,true,true,true,true' && gameWon === false) {
         gameText.innerHTML = 'TIE!';
         gameScore[2]++;
