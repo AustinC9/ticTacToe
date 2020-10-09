@@ -1,0 +1,14 @@
+.table {
+    visibility: hidden;
+    /* Makes table columns equal width */
+    table-layout: fixed;
+    font-size: 18px;
+}
+
+#gameText {
+    font-size: 50px;
+}
+h1, #gameText, #rstBtn, .form-group, .btn {
+    font-family: 'Bangers', cursive;
+    /*font-family: 'Open Sans', sans-serif;*/
+}
